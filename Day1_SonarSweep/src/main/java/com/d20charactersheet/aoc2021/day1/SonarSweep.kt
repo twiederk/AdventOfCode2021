@@ -5,13 +5,24 @@ import kotlin.io.path.readLines
 
 class SonarSweep {
 
+    private companion object {
+        const val DEPTH_ZERO = 0
+    }
+
     fun loadSonarSweepReport(filename: String): List<String> {
         return Path(filename).readLines()
     }
 
     fun countDepthIncreases(data: List<Int>): Int {
-
-        return 0
+        var lastValue = DEPTH_ZERO
+        var countDepthIncrease = 0
+        for (depth in data) {
+            if (lastValue != DEPTH_ZERO && depth > lastValue) {
+                countDepthIncrease++
+            }
+            lastValue = depth
+        }
+        return countDepthIncrease
     }
 
 }

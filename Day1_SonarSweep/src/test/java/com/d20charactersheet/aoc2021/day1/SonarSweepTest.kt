@@ -38,4 +38,5 @@ class SonarSweepTest {
         // assert
         assertThat(numberOfDepthIncreases).isEqualTo(7)
     }
+
 }
