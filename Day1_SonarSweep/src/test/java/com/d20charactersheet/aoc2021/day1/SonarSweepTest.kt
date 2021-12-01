@@ -10,7 +10,7 @@ class SonarSweepTest {
     fun loadSonarSweepReport() {
 
         // act
-        val data = SonarSweep().loadSonarSweepReport(".\\src\\test\\resources\\sonar_sweep_report_test.txt")
+        val data : List<Int> = SonarSweep().loadSonarSweepReport(".\\src\\test\\resources\\sonar_sweep_report_test.txt")
 
         // assert
         assertThat(data).hasSize(10)

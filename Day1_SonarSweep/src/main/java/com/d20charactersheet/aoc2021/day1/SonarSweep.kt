@@ -9,8 +9,8 @@ class SonarSweep {
         const val DEPTH_ZERO = 0
     }
 
-    fun loadSonarSweepReport(filename: String): List<String> {
-        return Path(filename).readLines()
+    fun loadSonarSweepReport(filename: String): List<Int> {
+        return Path(filename).readLines().map { it.toInt() }
     }
 
     fun countDepthIncreases(data: List<Int>): Int {
