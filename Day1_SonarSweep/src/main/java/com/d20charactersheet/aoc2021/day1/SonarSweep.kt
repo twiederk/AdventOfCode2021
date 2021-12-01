@@ -25,4 +25,9 @@ class SonarSweep {
         return countDepthIncrease
     }
 
+    fun sumSlidingWindows(data: List<Int>): List<Int> {
+        return emptyList()
+    }
+
+
 }

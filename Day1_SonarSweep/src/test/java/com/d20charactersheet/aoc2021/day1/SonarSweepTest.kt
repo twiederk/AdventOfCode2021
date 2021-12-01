@@ -10,7 +10,7 @@ class SonarSweepTest {
     fun loadSonarSweepReport() {
 
         // act
-        val data : List<Int> = SonarSweep().loadSonarSweepReport(".\\src\\test\\resources\\sonar_sweep_report_test.txt")
+        val data: List<Int> = SonarSweep().loadSonarSweepReport(".\\src\\test\\resources\\sonar_sweep_report_test.txt")
 
         // assert
         assertThat(data).hasSize(10)
@@ -37,6 +37,29 @@ class SonarSweepTest {
 
         // assert
         assertThat(numberOfDepthIncreases).isEqualTo(7)
+    }
+
+    @Test
+    fun sumSlidingWindows() {
+        // arrange
+        val data: List<Int> = listOf(
+            199,
+            200,
+            208,
+            210,
+            200,
+            207,
+            240,
+            269,
+            260,
+            263
+        )
+
+        // act
+        val sumsOfSlidingWindows: List<Int> = SonarSweep().sumSlidingWindows(data)
+
+        // assert
+        assertThat(sumsOfSlidingWindows).containsExactly(607, 618, 618, 617, 647, 716, 769, 792)
     }
 
 }
