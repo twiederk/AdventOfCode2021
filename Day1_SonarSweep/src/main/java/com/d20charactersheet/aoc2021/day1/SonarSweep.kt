@@ -9,4 +9,9 @@ class SonarSweep {
         return Path(filename).readLines()
     }
 
+    fun countDepthIncreases(data: List<Int>): Int {
+
+        return 0
+    }
+
 }

@@ -16,4 +16,26 @@ class SonarSweepTest {
         assertThat(data).hasSize(10)
     }
 
+    @Test
+    fun count_increase_depth() {
+        // arrange
+        val data: List<Int> = listOf(
+            199,
+            200,
+            208,
+            210,
+            200,
+            207,
+            240,
+            269,
+            260,
+            263
+        )
+
+        // act
+        val numberOfDepthIncreases = SonarSweep().countDepthIncreases(data)
+
+        // assert
+        assertThat(numberOfDepthIncreases).isEqualTo(7)
+    }
 }
