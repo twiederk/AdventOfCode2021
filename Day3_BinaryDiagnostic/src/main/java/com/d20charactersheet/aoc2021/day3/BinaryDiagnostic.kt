@@ -1,5 +1,8 @@
 package com.d20charactersheet.aoc2021.day3
 
+import kotlin.io.path.Path
+import kotlin.io.path.readLines
+
 class BinaryDiagnostic {
 
     fun readGammaRate(diagnosticReport: List<Int>): Int {
@@ -37,6 +40,10 @@ class BinaryDiagnostic {
 
     fun createEpsilonRate(gammaRate: Int): Int {
         return gammaRate.inv() and 0b11111
+    }
+
+    fun loadBinaryDiagnostic(filename: String): List<Int> {
+        return Path(filename).readLines().map { Integer.parseInt(it, 2); }
     }
 
 }
