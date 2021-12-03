@@ -11,6 +11,7 @@
     <modules>
         <module>Day1_SonarSweep</module>
         <module>Day2_Dive</module>
+        <module>Day3_BinaryDiagnostic</module>
     </modules>
 
     <properties>
