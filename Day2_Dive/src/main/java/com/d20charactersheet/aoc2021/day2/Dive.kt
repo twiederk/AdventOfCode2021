@@ -5,6 +5,18 @@ import kotlin.io.path.readLines
 
 class Dive {
 
+    fun loadCourse(filename: String): List<NaviCommand> {
+        val rawCourse = Path(filename).readLines()
+        val plannedCourse = mutableListOf<NaviCommand>()
+        for (rawNaviCommand in rawCourse) {
+            val paramsNaviCommand = rawNaviCommand.split(' ')
+            val direction = Direction.valueOf(paramsNaviCommand[0].uppercase())
+            val value = paramsNaviCommand[1].toInt()
+            plannedCourse.add(NaviCommand(direction, value))
+        }
+        return plannedCourse
+    }
+
     fun dive(plannedCourse: List<NaviCommand>): Int {
         var horizontal = 0
         var depth = 0
@@ -18,16 +30,21 @@ class Dive {
         return horizontal * depth
     }
 
-    fun loadCourse(filename: String): List<NaviCommand> {
-        val rawCourse = Path(filename).readLines()
-        val plannedCourse = mutableListOf<NaviCommand>()
-        for (rawNaviCommand in rawCourse) {
-            val paramsNaviCommand = rawNaviCommand.split(' ')
-            val direction = Direction.valueOf(paramsNaviCommand[0].uppercase())
-            val value = paramsNaviCommand[1].toInt()
-            plannedCourse.add(NaviCommand(direction, value))
+    fun diveWithAim(plannedCourse: List<NaviCommand>): Int {
+        var horizontal = 0
+        var depth = 0
+        var aim = 0
+        for (naviCommand in plannedCourse) {
+            when (naviCommand.direction) {
+                Direction.FORWARD -> {
+                    horizontal += naviCommand.value
+                    depth += (aim * naviCommand.value)
+                }
+                Direction.DOWN -> aim += naviCommand.value
+                Direction.UP -> aim -= naviCommand.value
+            }
         }
-        return plannedCourse
+        return horizontal * depth
     }
 
 }

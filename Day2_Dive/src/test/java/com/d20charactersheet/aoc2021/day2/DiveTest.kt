@@ -41,4 +41,22 @@ class DiveTest {
         assertThat(result).isEqualTo(150)
     }
 
+    @Test
+    fun diveWithAim() {
+        val plannedCourse = listOf(
+            NaviCommand(Direction.FORWARD, 5),
+            NaviCommand(Direction.DOWN, 5),
+            NaviCommand(Direction.FORWARD, 8),
+            NaviCommand(Direction.UP, 3),
+            NaviCommand(Direction.DOWN, 8),
+            NaviCommand(Direction.FORWARD, 2),
+        )
+
+        // act
+        val result = Dive().diveWithAim(plannedCourse)
+
+        // assert
+        assertThat(result).isEqualTo(900)
+    }
+
 }
