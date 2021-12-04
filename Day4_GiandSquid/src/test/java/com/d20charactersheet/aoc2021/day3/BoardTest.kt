@@ -34,6 +34,7 @@ class BoardTest {
             intArrayOf(24, 9, 26, 6, 3),
             intArrayOf(4, 19, 20, 5, 7)
         )
+        assertThat(board.allNumbers).hasSize(25)
     }
 
 }
