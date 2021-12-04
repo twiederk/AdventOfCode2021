@@ -3,7 +3,7 @@ package com.d20charactersheet.aoc2021.day3
 class Board(board: Array<IntArray>) {
 
     val lanes: MutableList<List<Int>> = mutableListOf()
-    val allNumbers : MutableList<Int> = mutableListOf()
+    val allNumbers: MutableList<Int> = mutableListOf()
 
     init {
         for (row in board) {
@@ -13,7 +13,7 @@ class Board(board: Array<IntArray>) {
 
         for (row in board) {
             for (number in row)
-            allNumbers.add(number)
+                allNumbers.add(number)
         }
     }
 
@@ -33,7 +33,7 @@ class Board(board: Array<IntArray>) {
         return columns
     }
 
-    fun movesToWin(lane: List<Int>, numbersToDraw: List<Int>): Int {
+    fun movesToWinLane(lane: List<Int>, numbersToDraw: List<Int>): Int {
         val tempLane = lane.toMutableList()
         var movesToWin = 0
 
@@ -46,4 +46,15 @@ class Board(board: Array<IntArray>) {
         }
         return movesToWin
     }
+
+    fun movesToWinBoard(numbersToDraw: List<Int>): Int {
+        var movesToWin = 1000
+        for (lane in lanes) {
+            if (movesToWin > movesToWinLane(lane, numbersToDraw)) {
+                movesToWin = movesToWinLane(lane, numbersToDraw)
+            }
+        }
+        return movesToWin
+    }
+
 }
