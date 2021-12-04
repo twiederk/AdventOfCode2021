@@ -12,6 +12,7 @@
         <module>Day1_SonarSweep</module>
         <module>Day2_Dive</module>
         <module>Day3_BinaryDiagnostic</module>
+        <module>Day4_GiandSquid</module>
     </modules>
 
     <properties>
