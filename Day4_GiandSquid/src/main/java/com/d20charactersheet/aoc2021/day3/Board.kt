@@ -4,6 +4,8 @@ class Board(board: List<List<Int>>) {
 
     val lanes: MutableList<List<Int>> = mutableListOf()
     val allNumbers: MutableList<Int> = mutableListOf()
+    var movesToWin: Int = 1000
+        private set
 
     init {
         for (row in board) {
@@ -54,6 +56,7 @@ class Board(board: List<List<Int>>) {
                 movesToWin = movesToWinLane(lane, numbersToDraw)
             }
         }
+        this.movesToWin = movesToWin
         return movesToWin
     }
 

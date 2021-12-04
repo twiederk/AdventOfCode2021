@@ -2,7 +2,7 @@ package com.d20charactersheet.aoc2021.day3
 
 class Bingo {
 
-    val boards: MutableList<Board> = mutableListOf()
+    private val boards: MutableList<Board> = mutableListOf()
 
     fun addBoard(board: Board) {
         boards.add(board)
@@ -17,6 +17,13 @@ class Bingo {
             }
         }
         return winnerBoard
+    }
+
+    fun score(numbersToDraw: List<Int>, board: Board): Int {
+        val numbersDrawn = numbersToDraw.slice(IntRange(0, board.movesToWin - 1))
+        val unmarkedNumbers = board.allNumbers.toMutableList()
+        unmarkedNumbers.removeAll(numbersDrawn)
+        return unmarkedNumbers.sum() * numbersDrawn.last()
     }
 
 }
