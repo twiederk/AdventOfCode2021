@@ -9,12 +9,12 @@ class BoardTest {
     fun init() {
         // act
         val board = Board(
-            arrayOf(
-                intArrayOf(14, 21, 17, 24, 4),
-                intArrayOf(10, 16, 15, 9, 19),
-                intArrayOf(18, 8, 23, 26, 20),
-                intArrayOf(22, 11, 13, 6, 5),
-                intArrayOf(2, 0, 12, 3, 7)
+            listOf(
+                listOf(14, 21, 17, 24, 4),
+                listOf(10, 16, 15, 9, 19),
+                listOf(18, 8, 23, 26, 20),
+                listOf(22, 11, 13, 6, 5),
+                listOf(2, 0, 12, 3, 7)
             )
         )
 
@@ -41,12 +41,12 @@ class BoardTest {
         val drawnNumbers =
             listOf(7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24, 10, 16, 13, 6, 15, 25, 12, 22, 18, 20, 8, 19, 3, 26, 1)
         val board = Board(
-            arrayOf(
-                intArrayOf(14, 21, 17, 24, 4),
-                intArrayOf(10, 16, 15, 9, 19),
-                intArrayOf(18, 8, 23, 26, 20),
-                intArrayOf(22, 11, 13, 6, 5),
-                intArrayOf(2, 0, 12, 3, 7)
+            listOf(
+                listOf(14, 21, 17, 24, 4),
+                listOf(10, 16, 15, 9, 19),
+                listOf(18, 8, 23, 26, 20),
+                listOf(22, 11, 13, 6, 5),
+                listOf(2, 0, 12, 3, 7)
             )
         )
 
@@ -63,12 +63,12 @@ class BoardTest {
         val numbersToDraw =
             listOf(7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24, 10, 16, 13, 6, 15, 25, 12, 22, 18, 20, 8, 19, 3, 26, 1)
         val board = Board(
-            arrayOf(
-                intArrayOf(14, 21, 17, 24, 4),
-                intArrayOf(10, 16, 15, 9, 19),
-                intArrayOf(18, 8, 23, 26, 20),
-                intArrayOf(22, 11, 13, 6, 5),
-                intArrayOf(2, 0, 12, 3, 7)
+            listOf(
+                listOf(14, 21, 17, 24, 4),
+                listOf(10, 16, 15, 9, 19),
+                listOf(18, 8, 23, 26, 20),
+                listOf(22, 11, 13, 6, 5),
+                listOf(2, 0, 12, 3, 7)
             )
         )
 

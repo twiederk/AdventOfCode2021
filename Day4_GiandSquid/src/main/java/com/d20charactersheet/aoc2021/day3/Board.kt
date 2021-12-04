@@ -1,6 +1,6 @@
 package com.d20charactersheet.aoc2021.day3
 
-class Board(board: Array<IntArray>) {
+class Board(board: List<List<Int>>) {
 
     val lanes: MutableList<List<Int>> = mutableListOf()
     val allNumbers: MutableList<Int> = mutableListOf()
@@ -17,7 +17,7 @@ class Board(board: Array<IntArray>) {
         }
     }
 
-    private fun createColumns(board: Array<IntArray>): List<List<Int>> {
+    private fun createColumns(board: List<List<Int>>): List<List<Int>> {
         val columns: MutableList<List<Int>> = mutableListOf()
         for (column in 0..4) {
             columns.add(
