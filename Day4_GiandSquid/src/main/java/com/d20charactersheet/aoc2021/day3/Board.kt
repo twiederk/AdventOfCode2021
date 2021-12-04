@@ -2,12 +2,12 @@ package com.d20charactersheet.aoc2021.day3
 
 class Board(board: Array<IntArray>) {
 
-    val lanes: MutableList<IntArray> = mutableListOf()
+    val lanes: MutableList<List<Int>> = mutableListOf()
     val allNumbers : MutableList<Int> = mutableListOf()
 
     init {
         for (row in board) {
-            lanes.add(row)
+            lanes.add(mutableListOf(*row.toTypedArray()))
         }
         lanes.addAll(createColumns(board))
 
@@ -17,11 +17,11 @@ class Board(board: Array<IntArray>) {
         }
     }
 
-    private fun createColumns(board: Array<IntArray>): List<IntArray> {
-        val columns: MutableList<IntArray> = mutableListOf()
+    private fun createColumns(board: Array<IntArray>): List<List<Int>> {
+        val columns: MutableList<List<Int>> = mutableListOf()
         for (column in 0..4) {
             columns.add(
-                intArrayOf(
+                listOf(
                     board[0][column],
                     board[1][column],
                     board[2][column],
@@ -31,5 +31,19 @@ class Board(board: Array<IntArray>) {
             )
         }
         return columns
+    }
+
+    fun movesToWin(lane: List<Int>, numbersToDraw: List<Int>): Int {
+        val tempLane = lane.toMutableList()
+        var movesToWin = 0
+
+        for (drawnNumber in numbersToDraw) {
+            movesToWin++
+            tempLane.remove(drawnNumber)
+            if (tempLane.isEmpty()) {
+                break
+            }
+        }
+        return movesToWin
     }
 }
