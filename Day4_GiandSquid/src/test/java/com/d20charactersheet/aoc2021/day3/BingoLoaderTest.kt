@@ -16,4 +16,14 @@ class BingoLoaderTest {
         assertThat(numbersToDraw).hasSize(27)
     }
 
+    @Test
+    fun loadBoards() {
+        // arrange
+
+        // act
+        val boards = BingoLoader().loadBoards(".\\src\\test\\resources\\bingo_test.txt")
+
+        // assert
+        assertThat(boards).hasSize(3)
+    }
 }
