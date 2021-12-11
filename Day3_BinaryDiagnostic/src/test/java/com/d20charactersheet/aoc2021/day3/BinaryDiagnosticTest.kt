@@ -7,8 +7,6 @@ class BinaryDiagnosticTest {
 
     @Test
     fun loadBinaryReport() {
-        // arrange
-
         // act
         val rawData =
             BinaryDiagnostic().loadRawData(".\\src\\test\\resources\\binary_diagnostic_test.txt")
@@ -49,7 +47,7 @@ class BinaryDiagnosticTest {
             0b01010
         )
 
-        val rawData = RawData(numbers)
+        val rawData = RawData(numbers, 5)
 
         // act
         val gammaRate = BinaryDiagnostic().readGammaRate(rawData)
@@ -60,10 +58,8 @@ class BinaryDiagnosticTest {
 
     @Test
     fun createEpsilonRate() {
-        // arrange
-
         // act
-        val epsilonRate = BinaryDiagnostic().createEpsilonRate(22)
+        val epsilonRate = BinaryDiagnostic().createEpsilonRate(22, 5)
 
         // assert
         assertThat(epsilonRate).isEqualTo(9)
@@ -71,8 +67,6 @@ class BinaryDiagnosticTest {
 
     @Test
     fun getMask_position0_return1() {
-        // arrange
-
         // act
         val result = BinaryDiagnostic().getMask(0)
 
@@ -82,8 +76,6 @@ class BinaryDiagnosticTest {
 
     @Test
     fun getMask_position1_return2() {
-        // arrange
-
         // act
         val result = BinaryDiagnostic().getMask(1)
 
@@ -93,8 +85,6 @@ class BinaryDiagnosticTest {
 
     @Test
     fun getMask_position2_return4() {
-        // arrange
-
         // act
         val result = BinaryDiagnostic().getMask(2)
 

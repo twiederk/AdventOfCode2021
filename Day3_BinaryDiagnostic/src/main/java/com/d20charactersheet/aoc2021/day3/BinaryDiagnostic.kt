@@ -35,13 +35,23 @@ class BinaryDiagnostic {
         return gammaRate
     }
 
-    fun createEpsilonRate(gammaRate: Int): Int {
-        return gammaRate.inv() and 0b11111
+    fun createEpsilonRate(gammaRate: Int, numberOfDigits: Int): Int {
+        return gammaRate.inv() and getFullMask(numberOfDigits)
+    }
+
+    private fun getFullMask(numberOfDigits: Int): Int {
+        var fullMask = 0
+        for (position in IntRange(0, numberOfDigits - 1)) {
+            fullMask += getMask(position)
+        }
+        return fullMask
     }
 
     fun loadRawData(filename: String): RawData {
-        val numbers = Path(filename).readLines().map { Integer.parseInt(it, 2); }
-        return RawData(numbers)
+        val numbersAsStrings = Path(filename).readLines()
+        val numbers = numbersAsStrings.map { Integer.parseInt(it, 2); }
+        val numberOfColumns = numbersAsStrings[0].length
+        return RawData(numbers, numberOfColumns)
     }
 
 }
