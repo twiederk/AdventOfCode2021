@@ -10,11 +10,11 @@ class BinaryDiagnosticTest {
         // arrange
 
         // act
-        val binaryReport =
-            BinaryDiagnostic().loadBinaryDiagnostic(".\\src\\test\\resources\\binary_diagnostic_test.txt")
+        val rawData =
+            BinaryDiagnostic().loadRawData(".\\src\\test\\resources\\binary_diagnostic_test.txt")
 
         // assert
-        assertThat(binaryReport).containsExactly(
+        assertThat(rawData.numbers).containsExactly(
             0b00100,
             0b11110,
             0b10110,
@@ -34,7 +34,7 @@ class BinaryDiagnosticTest {
     @Test
     fun readGammaRate() {
         // arrange
-        val diagnosticReport = listOf(
+        val numbers = listOf(
             0b00100,
             0b11110,
             0b10110,
@@ -49,8 +49,10 @@ class BinaryDiagnosticTest {
             0b01010
         )
 
+        val rawData = RawData(numbers)
+
         // act
-        val gammaRate = BinaryDiagnostic().readGammaRate(diagnosticReport)
+        val gammaRate = BinaryDiagnostic().readGammaRate(rawData)
 
         // assert
         assertThat(gammaRate).isEqualTo(22)
@@ -65,6 +67,39 @@ class BinaryDiagnosticTest {
 
         // assert
         assertThat(epsilonRate).isEqualTo(9)
+    }
+
+    @Test
+    fun getMask_position0_return1() {
+        // arrange
+
+        // act
+        val result = BinaryDiagnostic().getMask(0)
+
+        // assert
+        assertThat(result).isEqualTo(1)
+    }
+
+    @Test
+    fun getMask_position1_return2() {
+        // arrange
+
+        // act
+        val result = BinaryDiagnostic().getMask(1)
+
+        // assert
+        assertThat(result).isEqualTo(2)
+    }
+
+    @Test
+    fun getMask_position2_return4() {
+        // arrange
+
+        // act
+        val result = BinaryDiagnostic().getMask(2)
+
+        // assert
+        assertThat(result).isEqualTo(4)
     }
 
 }
