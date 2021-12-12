@@ -67,6 +67,7 @@ class SyntaxScoringTest {
         // assert
         assertThat(score).isEqualTo(1197)
     }
+
     @Test
     fun checkSyntax_CorruptedLine_score3() {
         // act
@@ -74,6 +75,29 @@ class SyntaxScoringTest {
 
         // assert
         assertThat(score).isEqualTo(3)
+    }
+
+    @Test
+    fun checkProgram() {
+        // arrange
+        val program = listOf(
+            "[({(<(())[]>[[{[]{<()<>>",
+            "[(()[<>])]({[<{<<[]>>(",
+            "{([(<{}[<>[]}>{[]{[(<()>",
+            "(((({<>}<{<{<>}{[]{[]{}",
+            "[[<[([]))<([[{}[[()]]]",
+            "[{[{({}]{}}([{[{{{}}([]",
+            "{<[[]]>}<{[{[{[]{()[[[]",
+            "[<(<(<(<{}))><([]([]()",
+            "<{([([[(<>()){}]>(<<{{",
+            "<{([{{}}[<[[[<>{}]]]>[]]"
+        )
+
+        // act
+        val score = SyntaxScoring().checkProgram(program)
+
+        // assert
+        assertThat(score).isEqualTo(26397)
     }
 
 }

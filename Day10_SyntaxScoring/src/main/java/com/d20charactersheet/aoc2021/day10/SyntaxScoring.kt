@@ -35,5 +35,13 @@ class SyntaxScoring {
         throw IllegalArgumentException("unknown statement: $statement")
     }
 
+    fun checkProgram(program: List<String>): Int {
+        var score = 0
+        for (line in program) {
+            score += checkSyntax(line)
+        }
+        return score
+    }
+
 }
 
