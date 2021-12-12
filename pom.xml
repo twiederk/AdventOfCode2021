@@ -13,6 +13,7 @@
         <module>Day2_Dive</module>
         <module>Day3_BinaryDiagnostic</module>
         <module>Day4_GiandSquid</module>
+        <module>Day10_SyntaxScoring</module>
     </modules>
 
     <properties>
