@@ -100,4 +100,15 @@ class SyntaxScoringTest {
         assertThat(score).isEqualTo(26397)
     }
 
+    @Test
+    fun loadProgram() {
+        // arrange
+
+        // act
+        val program = SyntaxScoring().loadProgramm(".\\src\\test\\resources\\syntax_scoring_test.txt")
+
+        // assert
+        assertThat(program).hasSize(10)
+
+    }
 }

@@ -1,6 +1,8 @@
 package com.d20charactersheet.aoc2021.day10
 
 import java.util.*
+import kotlin.io.path.Path
+import kotlin.io.path.readLines
 
 class SyntaxScoring {
 
@@ -41,6 +43,10 @@ class SyntaxScoring {
             score += checkSyntax(line)
         }
         return score
+    }
+
+    fun loadProgramm(filename: String): List<String> {
+        return Path(filename).readLines()
     }
 
 }
