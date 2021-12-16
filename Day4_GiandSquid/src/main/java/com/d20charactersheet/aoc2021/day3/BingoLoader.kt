@@ -13,7 +13,6 @@ class BingoLoader {
     fun loadBoards(filename: String): List<Board> {
         val lines = Path(filename).readLines()
         val boardsRawData: List<List<String>> = lines.drop(1).chunked(6)
-        println(boardsRawData)
 
         val boards = mutableListOf<Board>()
         for (boardRawData: List<String> in boardsRawData) {
