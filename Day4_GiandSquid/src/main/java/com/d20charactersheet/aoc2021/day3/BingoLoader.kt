@@ -12,17 +12,18 @@ class BingoLoader {
 
     fun loadBoards(filename: String): List<Board> {
         val lines = Path(filename).readLines()
-        val range = IntRange(2, lines.size - 5)
+        val boardsRawData: List<List<String>> = lines.drop(1).chunked(6)
+        println(boardsRawData)
+
         val boards = mutableListOf<Board>()
-        for (lineIndex in range step 5) {
-            val data = listOf(
-                lines[lineIndex].trim().replace("  ", " ").split(' ').map { it.trim().toInt() },
-                lines[lineIndex + 1].trim().replace("  ", " ").split(' ').map { it.trim().toInt() },
-                lines[lineIndex + 2].trim().replace("  ", " ").split(' ').map { it.trim().toInt() },
-                lines[lineIndex + 3].trim().replace("  ", " ").split(' ').map { it.trim().toInt() },
-                lines[lineIndex + 4].trim().replace("  ", " ").split(' ').map { it.trim().toInt() },
-            )
-            boards.add(Board(data))
+        for (boardRawData: List<String> in boardsRawData) {
+            val boardRawDataWithoutFirstLine = boardRawData.drop(1)
+            val boardConvertedRawData = boardRawDataWithoutFirstLine.map { line ->
+                line.trim()
+                    .split(Regex("\\W+"))
+                    .map { it.toInt() }
+            }
+            boards.add(Board(boardConvertedRawData))
         }
 
         return boards
